@@ -13,8 +13,9 @@ A server side Nagios configuration template for using NSClient++ with RestAPI
     `cd plugins`
 3. Clone the repository: `git clone https://github.com/digitalraadgivning/nagios-config-server`.
 4. Navigate to the repository: `cd nagios-config-server`.
-5. Create a file named **nsclient_config.cfg** for the configuration variables: `mk nsclient_config.cfg`.
-6. Open the *nsclient_config.cfg* in an editor and paste in the following template:
+5. Make the python script executable `chmod +x check_nsclient.py`
+6. Create a file named **nsclient_config.cfg** for the configuration variables: `vim nsclient_config.cfg`.
+7. Open the *nsclient_config.cfg* in an editor and paste in the following template:
     ```  
     define command {
             command_name       generic_check_nsclient
@@ -26,7 +27,7 @@ A server side Nagios configuration template for using NSClient++ with RestAPI
             _vcenterpassword   
     }
     ```
-7. Fill out the configuration variables for your environment and save the file. If you don't plan to monitor vmware snapshots or esxi versions you mak leave the *_vcenter** variables blank. Example:
+8. Fill out the configuration variables for your environment and save the file. If you don't plan to monitor vmware snapshots or esxi versions you mak leave the *_vcenter** variables blank. Example:
     ```  
     define command {
             command_name       generic_check_nsclient
@@ -38,14 +39,14 @@ A server side Nagios configuration template for using NSClient++ with RestAPI
             _vcenterpassword   secret_pass2
     }
     ```
-8. Open the main nagios configuration file: `vim /usr/local/nagios/etc/nagios.cfg` (NB: Distro dependent path)
-9. Add the following lines to the part that declares object configuration files:
+9. Open the main nagios configuration file: `vim /usr/local/nagios/etc/nagios.cfg` (NB: Distro dependent path)
+10. Add the following lines to the part that declares object configuration files:
     ```
-    cfg_file=/usr/local/nagios/plugins/nsclient_config.cfg
-    cfg_file=/usr/local/nagios/plugins/nsclient_commands.cfg
+    cfg_file=/usr/local/nagios/plugins/nagios-config-server/nsclient_config.cfg
+    cfg_file=/usr/local/nagios/plugins/nagios-config-server/nsclient_commands.cfg
     ```
-10. Verify the Nagios configuration `/usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg` (NB: Distro dependent path)
-11. Restart the Nagios Service `service nagios restart` (NB: Distro dependent)
+11. Verify the Nagios configuration `/usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg` (NB: Distro dependent path)
+12. Restart the Nagios Service `service nagios restart` (NB: Distro dependent)
 
 ## Examples
 
