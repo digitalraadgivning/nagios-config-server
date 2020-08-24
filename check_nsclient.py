@@ -1,4 +1,3 @@
-#!/usr/bin/env python3.6
 import requests, json, base64, sys
 import urllib3
 
