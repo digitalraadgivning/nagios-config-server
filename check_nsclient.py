@@ -5,6 +5,8 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 (EXIT_OK, EXIT_WARNING, EXIT_CRITICAL, EXIT_UNKNOWN) = (0,1,2,3)
 
+print("test")
+
 def main():
     try:
         #Check if correct parameters are entered
@@ -20,7 +22,7 @@ def main():
         status_message = message
 
         if(len(perfs)>0):
-            status_message += ' | '
+            status_message += ' - '
 
         for perf in perfs:
             values = perfs[perf]
@@ -30,7 +32,7 @@ def main():
         status_message = status_message[:-2]
 
         if(len(perfs)>0):
-            status_message += " | warn/crit: "
+            status_message += " - warn/crit: "
 
         for perf in perfs:
             values = perfs[perf]
