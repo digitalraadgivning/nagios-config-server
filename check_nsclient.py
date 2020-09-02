@@ -5,8 +5,6 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 (EXIT_OK, EXIT_WARNING, EXIT_CRITICAL, EXIT_UNKNOWN) = (0,1,2,3)
 
-print("test")
-
 def main():
     try:
         #Check if correct parameters are entered
